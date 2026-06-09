@@ -3,89 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Socials</title>
+    <title>totallynotislam | Connect</title>
     <style>
+        /* Modern CSS Reset & Variables */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            
+            /* Social Brand Colors */
+            --youtube-red: #ff0000;
+            --youtube-glow: rgba(255, 0, 0, 0.15);
+            --insta-grad: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --insta-glow: rgba(220, 39, 67, 0.2);
         }
 
         body {
-            background: #121212;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            /* Subtle geometric ambient background */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(219, 39, 119, 0.08) 0px, transparent 50%);
         }
 
-        .container {
-            background: #1e1e1e;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 400px;
+        /* Profile Card Styling */
+        .profile-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px 32px;
+            border-radius: 24px;
             width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        h1 {
+        /* Avatar Container & Styling */
+        .avatar-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 24px;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover .profile-pic {
+            transform: scale(1.04);
+        }
+
+        /* Text Content Styling */
+        .username {
             font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             margin-bottom: 8px;
-            color: #fff;
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        p {
-            color: #aaa;
-            font-size: 14px;
-            margin-bottom: 30px;
+        .bio {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 32px;
+            font-weight: 400;
         }
 
-        .btn {
+        /* Links / Buttons */
+        .links-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
-            margin: 12px 0;
-            border-radius: 8px;
+            padding: 16px;
+            border-radius: 14px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 16px;
-            transition: transform 0.2s, filter 0.2s;
+            letter-spacing: -0.2px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
+        /* YouTube Custom Styling */
+        .social-link.youtube {
+            background: var(--youtube-red);
+            color: #ffffff;
+            box-shadow: 0 4px 12px var(--youtube-glow);
         }
 
-        .youtube {
-            background-color: #FF0000;
-            color: white;
+        .social-link.youtube:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.35);
         }
 
-        .instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
+        /* Instagram Custom Styling */
+        .social-link.instagram {
+            background: var(--insta-grad);
+            color: #ffffff;
+            box-shadow: 0 4px 12px var(--insta-glow);
+        }
+
+        .social-link.instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(220, 39, 67, 0.4);
+        }
+
+        .social-link:active {
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .footer-tag {
+            margin-top: 32px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to My Space</h1>
-        <p>Check out my content and connect with me below!</p>
+    <div class="profile-card">
+        
+        <div class="avatar-container">
+            <!-- Your direct YouTube avatar URL embedded below -->
+            <img src="https://yt3.googleusercontent.com/zNqFMJmGgvay-lwIfnwDlTbu7auPLCfxJqfT72lKDBcH9UP6S95g245C1usHdiODYqsiUywl0AY=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture" class="profile-pic">
+        </div>
 
-        <a href="https://www.youtube.com/@totallynotislam" target="_blank" class="btn youtube">
-            Subscribe on YouTube
-        </a>
+        <h1 class="username">@totallynotislam</h1>
+        <p class="bio">Welcome to my hub. Check out my content and connect with me across platforms below!</p>
 
-        <a href="https://www.instagram.com/islam_.r4" target="_blank" class="btn instagram">
-            Follow on Instagram
-        </a>
+        <div class="links-wrapper">
+            <!-- REMEMBER TO PASTE YOUR ACTUAL CHANNEL/PROFILE LINKS INSIDE THE href="..." -->
+            <a href="https://www.youtube.com" target="_blank" class="social-link youtube">
+                Subscribe on YouTube
+            </a>
+
+            <a href="https://www.instagram.com" target="_blank" class="social-link instagram">
+                Follow on Instagram
+            </a>
+        </div>
+
+        <div class="footer-tag">totallynotislam © 2026</div>
     </div>
 
 </body>
